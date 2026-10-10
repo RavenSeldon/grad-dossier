@@ -1,0 +1,8 @@
+# Plaintext dossier content: never commit or publish.
+content/
+preview/
+progress*.json
+dossier-progress-*.json
+.DS_Store
+node_modules/
+test/.out/

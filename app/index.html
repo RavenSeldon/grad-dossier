@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Grad Dossier 2027</title>
+  <meta name="description" content="Private working dossier for Fall 2027 graduate applications.">
+  <meta name="theme-color" content="#f3f5f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1424" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Dossier">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to the dossier</a>
+
+  <section id="lock" class="lock" hidden aria-labelledby="lock-title">
+    <form id="lock-form" class="lock-card" autocomplete="off">
+      <svg class="lock-star" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 L37 27 L60 32 L37 37 L32 60 L27 37 L4 32 L27 27 Z"/></svg>
+      <h1 id="lock-title">This dossier is locked</h1>
+      <p>Type your passphrase to read it on this device.</p>
+      <label for="passphrase">Passphrase</label>
+      <input id="passphrase" name="passphrase" type="password" autocomplete="current-password" required spellcheck="false" autocapitalize="off">
+      <label class="check"><input id="remember" type="checkbox"> Keep unlocked on this device</label>
+      <p id="lock-error" class="lock-error" role="alert" hidden></p>
+      <button id="unlock" type="submit">Unlock</button>
+    </form>
+  </section>
+
+  <div id="app" class="app" hidden>
+    <header class="topbar">
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 L37 27 L60 32 L37 37 L32 60 L27 37 L4 32 L27 27 Z"/></svg>
+        <span>Grad Dossier</span>
+      </a>
+      <details class="toc-mobile" id="toc-mobile">
+        <summary>Sections</summary>
+        <nav aria-label="Sections (menu)"><ol id="toc-list-mobile"></ol></nav>
+      </details>
+      <div class="topbar-actions">
+        <button type="button" id="theme" class="ghost" aria-label="Switch colour theme">Auto</button>
+        <button type="button" id="lock-now" class="ghost" hidden>Lock</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <nav aria-label="Sections"><ol id="toc-list"></ol></nav>
+      </aside>
+
+      <main id="content" tabindex="-1">
+        <div id="top" class="masthead">
+          <h1 id="title"></h1>
+          <p id="edition" class="edition"></p>
+          <p id="next-up" class="next-up" aria-live="polite"></p>
+        </div>
+
+        <figure class="sky" id="sky">
+          <div class="sky-scroll" tabindex="0" role="region" aria-label="Deadline timeline, scrollable">
+            <div id="sky-chart"></div>
+          </div>
+          <figcaption>Filled stars are confirmed dates. Hollow stars repeat the 2026 date until the 2027 call is published. Diamonds are your own gates.</figcaption>
+          <ol id="sky-list" class="sr-only"></ol>
+        </figure>
+
+        <article id="dossier" class="dossier"></article>
+
+        <footer class="foot">
+          <p>Ticked boxes are saved in this browser only. Move them between devices with a progress file.</p>
+          <div class="foot-actions">
+            <button type="button" id="export">Save progress file</button>
+            <label class="button-like" for="import">Load progress file</label>
+            <input type="file" id="import" accept="application/json,.json" class="sr-only">
+          </div>
+          <p id="foot-status" class="foot-status" role="status"></p>
+          <p id="built" class="built"></p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <noscript><p class="noscript">This dossier needs JavaScript to unlock and display.</p></noscript>
+
+  <!--PAYLOAD-->
+  <script src="app.js" defer></script>
+</body>
+</html>
